@@ -1,0 +1,11 @@
+
+{
+  "domain": "afad_quake",
+  "name": "AFAD Deprem Sensörü",
+  "documentation": "https://github.com/ErtugrulKra/Afad_Quakes",
+  "version": "1.0.0",
+  "requirements": ["beautifulsoup4", "pandas"],
+  "dependencies": [],
+  "codeowners": ["@ErtugrulKra"],
+  "iot_class": "cloud_polling"
+}

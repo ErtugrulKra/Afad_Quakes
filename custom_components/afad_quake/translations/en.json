@@ -1,0 +1,11 @@
+
+{
+  "title": "AFAD Quake Sensor",
+  "config": {
+    "step": {
+      "user": {
+        "title": "AFAD Sensörü Ayarları"
+      }
+    }
+  }
+}

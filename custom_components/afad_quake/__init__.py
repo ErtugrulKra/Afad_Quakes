@@ -1,0 +1,1 @@
+"""AFAD Quake sensor integration"""
