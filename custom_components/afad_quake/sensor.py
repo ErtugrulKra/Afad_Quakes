@@ -1,4 +1,3 @@
-
 import logging
 from datetime import timedelta
 import voluptuous as vol
@@ -34,6 +33,19 @@ class AfadQuakeSensor(SensorEntity):
         self._attr_state = 0.0
         self.min_magnitude = min_magnitude
         
+    def safe_float(value, default=None):
+        try:
+            return float(value)
+        except (ValueError, TypeError):
+            return default
+
+    def marmara_bolgesinde_mi(enlem, boylam, enlem_min=39.0, enlem_max=42.5, boylam_min=26.0, boylam_max=30.5):
+        enlem = safe_float(enlem)
+        boylam = safe_float(boylam)
+        if enlem is None or boylam is None:
+            return False
+        return enlem_min <= enlem <= enlem_max and boylam_min <= boylam <= boylam_max
+    
     def update(self):
         _LOGGER.info("AFAD verisi güncelleniyor...")
         url = "https://deprem.afad.gov.tr/last-earthquakes.html"
@@ -93,6 +105,11 @@ class AfadQuakeSensor(SensorEntity):
             
             _LOGGER.warning("Son deprem büyüklüğü: %s", quake["Büyüklük"])
             
+            enlem = quake["Enlem"]
+            boylam = quake["Boylam"]
+
+            marmarada_mi = marmara_bolgesinde_mi(enlem, boylam)
+            
             map_link = f"https://www.google.com/maps?q={quake['Enlem']},{quake['Boylam']}"
             self._attr_state = quake["Büyüklük"]  # Ana değer olarak büyüklük
             self._attr_native_value = quake["Büyüklük"]  # Ana değer olarak büyüklük
@@ -104,6 +121,7 @@ class AfadQuakeSensor(SensorEntity):
                 "derinlik": quake["Derinlik"],
                 "tip": quake["Tip"],
                 "yer": quake["Yer"],
+                "marmara_bolgesi": marmarada_mi,
                 "harita": map_link
             }
 

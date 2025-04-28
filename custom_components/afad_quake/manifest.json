@@ -3,6 +3,7 @@
   "domain": "afad_quake",
   "name": "AFAD Deprem Sensörü",
   "documentation": "https://github.com/ErtugrulKra/Afad_Quakes",
+  "issue_tracker": "https://github.com/ErtugrulKra/Afad_Quakes/issues",
   "version": "1.0.0",
   "requirements": ["beautifulsoup4", "pandas"],
   "dependencies": [],
