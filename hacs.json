@@ -2,7 +2,6 @@
 {
   "name": "AFAD Quake Sensor",
   "content_in_root": false,
-  "domains": ["sensor"],
   "country": "TR",
   "homeassistant": "2023.0.0"
 }
