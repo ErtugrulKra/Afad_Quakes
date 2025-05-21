@@ -1,12 +1,10 @@
-
 {
-  "domain": "afad_quake",
-  "name": "AFAD Deprem Sensörü",
-  "documentation": "https://github.com/ErtugrulKra/Afad_Quakes",
-  "issue_tracker": "https://github.com/ErtugrulKra/Afad_Quakes/issues",
+  "domain": "afad_quakes",
+  "name": "AFAD Earthquakes",
   "version": "1.0.0",
-  "requirements": ["beautifulsoup4", "pandas"],
+  "documentation": "https://github.com/ErtugrulKra/Afad_Quakes",
   "dependencies": [],
   "codeowners": ["@ErtugrulKra"],
+  "requirements": ["beautifulsoup4", "pandas", "requests"],
   "iot_class": "cloud_polling"
 }
